@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt_BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> @vite('resources/css/app.css')
-    <title>Blog</title>
-</head>
-<body>
+@extends('site.main')
+@section('title', 'Blog | TH')
+
+<x-navbar></x-navbar>
+
+@section('content')
+
+    <a href="/register">Registro</a>
+
+
     <h1 class="text-red-500">
         View referente a nossa página Home {{ \Carbon\Carbon::now()->format('d/m/Y H:i:s') }}
     </h1>
-</body>
-</html>
