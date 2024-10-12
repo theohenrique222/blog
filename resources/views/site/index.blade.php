@@ -5,9 +5,6 @@
 
 @section('content')
 
-    <a href="/register">Registro</a>
-
-
     <h1 class="text-red-500">
-        View referente a nossa página Home {{ \Carbon\Carbon::now()->format('d/m/Y H:i:s') }}
+        Página inicial
     </h1>

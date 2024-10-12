@@ -8,7 +8,7 @@
 <div class="text-2xl font-bold text-center py-10">
     <h1>Criar Serviços</h1>
 </div>
-<div class="w-full max-w-6xl m-auto">
+<div class="w-full max-w-2xl m-auto">
     <form class="grid gap-5 p-2" action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="name">Nome do Serviço</label>
