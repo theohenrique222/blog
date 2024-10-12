@@ -1,41 +1,38 @@
-<nav class="bg-neutral-900 border-b border-gray-200 shadow">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex  h-16">
+<nav class="bg-neutral-900 border-b w-full mx-auto border-gray-200 shadow">
+    <div class="">
+        <div class="flex justify-between w-full max-w-6xl m-auto">
             <div class="flex items-center">
-
                 <div class="flex items-center">
                     <a href="{{ url('/') }}">
                         <h1 class="font-bold text-gray-200 text-2xl">Theo Henrique DEV</h1>
                     </a>
                 </div>
-
-
             </div>
 
-            <div class="items-center space-x-8 flex bg-red-500">
+            <div class="items-center flex py-2">
                 <a href="{{ url('/') }}"
-                    class="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                    class="text-gray-200 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                     Home
                 </a>
-                <a href="" class="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                <a href="" class="text-gray-200 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                     Sobre
                 </a>
-                <a href="" class="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                <a href="{{ route('services') }}" class="text-gray-200 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                     Serviços
                 </a>
-                <a href="" class="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                <a href="" class="text-gray-200 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                     Contato
                 </a>
             </div>
 
-            <div class="flex sm:items-center bg-green-500">
+            <div class="flex sm:items-center">
                 @guest
                     <a href="{{ route('login') }}"
-                        class="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                        class="text-gray-200 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                         Entrar
                     </a>
                     <a href="{{ route('register') }}"
-                        class="ml-4 text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                        class="ml-4 text-gray-200 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                         Registrar
                     </a>
                 @else
