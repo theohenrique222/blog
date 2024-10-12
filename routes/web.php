@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ServiceController;
 use Illuminate\Foundation\Application;
@@ -18,6 +19,7 @@ use Inertia\Inertia;
 
 Route::get('/', HomeController::class)->name('index');
 Route::get('/services', [ServiceController::class, 'show'])->name('services');
+Route::get('/about', [AboutController::class, 'show'])->name('about');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
