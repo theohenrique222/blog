@@ -16,7 +16,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             @foreach ($services as $service)
                 <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                    <!-- Imagem do serviço -->
+
                     @if ($service->image_patch)
                         <img src="{{ asset('storage/' . $service->image_patch) }}" alt="{{ $service->name }}"
                             class="h-48 w-full object-cover">
@@ -26,7 +26,6 @@
                         </div>
                     @endif
 
-                    <!-- Conteúdo do card -->
                     <div class="p-6">
                         <h2 class="text-xl font-semibold text-gray-800">{{ $service->name }}</h2>
                         <p class="text-gray-600 mt-2">{{ $service->description }}</p>
@@ -34,7 +33,6 @@
                             R$ {{ number_format($service->price, 2, ',', '.') }}
                         </p>
 
-                        <!-- Parcelamento -->
                         <div class="mt-2 text-gray-600">
                             @if ($service->installment_options)
                                 @php
@@ -46,6 +44,11 @@
                             @else
                                 <p>Parcelamento não disponível</p>
                             @endif
+                        </div>
+                        <div>
+                            <x-primary-button>
+                                <a href="/">Abrir</a>
+                            </x-primary-button>
                         </div>
                     </div>
                 </div>
