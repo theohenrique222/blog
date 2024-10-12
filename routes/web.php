@@ -4,21 +4,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ServiceController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
 Route::get('/', HomeController::class)->name('index');
 Route::get('/services', [ServiceController::class, 'show'])->name('services');
+Route::get('/services/create-services', [ServiceController::class, 'create'])->name('create-services');
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 
 Route::get('/dashboard', function () {

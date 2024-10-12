@@ -10,4 +10,8 @@ class ServiceController extends Controller
     public function show() {
         return view('site.services');
     }
+
+    public function create() {
+        return view('site.create-services');
+    }
 }

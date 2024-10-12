@@ -6,3 +6,4 @@
 @section('content')
 
 <h1>Services</h1>
+<a href="{{ route('create-services') }}">Criar Serviço</a>
