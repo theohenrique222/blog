@@ -10,7 +10,7 @@
     </div>
     <div class="w-full max-w-6xl m-auto text-center">
         <x-primary-button>
-            <a href="{{ route('create-services') }}">Criar Serviço</a>
+            <a href="{{ route('create.services') }}">Criar Serviço</a>
         </x-primary-button>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
@@ -47,7 +47,7 @@
                         </div>
                         <div>
                             <x-primary-button>
-                                <a href="/">Abrir</a>
+                                <a href="{{ route('services.show', $service->id) }}">Abrir</a>
                             </x-primary-button>
                         </div>
                     </div>

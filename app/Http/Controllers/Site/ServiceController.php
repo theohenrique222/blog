@@ -8,16 +8,24 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function show()
+    public function index()
     {
         $services = Service::all();
         return view('site.services', compact('services'));
     }
+    public function show($id)
+    {
+        // Buscar o serviço pelo ID
+        $service = Service::findOrFail($id); // findOrFail lança erro 404 se não encontrar
+
+        // Retornar a view com o serviço
+        return view('site.service', compact('service'));
+    }
 
     public function create()
     {
-        $installments = range(1,12);
-        
+        $installments = range(1, 12);
+
         return view('site.create-services', compact('installments'));
     }
     public function store(Request $request)

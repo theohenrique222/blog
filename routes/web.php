@@ -4,14 +4,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ServiceController;
-use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', HomeController::class)->name('index');
-Route::get('/services', [ServiceController::class, 'show'])->name('services');
-Route::get('/services/create-services', [ServiceController::class, 'create'])->name('create-services');
-Route::post('/services/create-services/store', [ServiceController::class, 'store'])->name('services.store');
+
+Route::get('/services', [ServiceController::class, 'index'])->name('services');
+Route::get('/services/create', [ServiceController::class, 'create'])->name('create.services');
+Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+
+Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 
 Route::get('/dashboard', function () {
