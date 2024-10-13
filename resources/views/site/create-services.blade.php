@@ -13,30 +13,36 @@
             @csrf
             <label for="image">Imagem do Serviço</label>
             <input type="file" name="image" id="image">
-            
+
             <label for="name">Nome do Serviço</label>
             <input type="text" name="name" id="name" required>
 
 
             <label for="description">Descrição</label>
-            <textarea name="description" id="description"></textarea>
+            <textarea class="resize-none" name="description" id="description"></textarea>
 
-            <label for="price">Preço</label>
-            <input type="number" name="price" id="price" step="0.01" required>
+            <div class="flex justify-between">
+                <div class="grid">
+                    <label for="price">Preço</label>
+                    <input type="number" name="price" id="price" step="0.01" required>
+                </div>
 
+                <div class="grid">
+                    <label for="installment_options">Opções de Parcelamento</label>
+                    <select name="installment_options[total_installments]" id="total_installments">
+                        @foreach ($installments as $installment)
+                            <option value="{{ $installment }}">{{ $installment }}x</option>
+                        @endforeach
+                    </select>
+                </div>
 
-            <label for="installment_options">Opções de Parcelamento</label>
-            <select name="installment_options[total_installments]" id="total_installments">
-                @foreach ($installments as $installment)
-                    <option value="{{ $installment }}">{{ $installment }}x</option>
-                @endforeach
-            </select>
+                <div class="grid">
+                    <label for="installmemnt">Taxa de Juros %</label>
+                    <input type="number" name="installment_options[interest_rate]" id="interest_rate"
+                        placeholder="Taxa de Juros (%)" step="0.01">
+                </div>
 
-            <input type="number" name="installment_options[interest_rate]" id="interest_rate"
-                placeholder="Taxa de Juros (%)" step="0.01">
-
-            <input type="text" name="installment_options[installment_value]" id="installment_value"
-                placeholder="Valor por Parcela" readonly>
+            </div>
 
             <label for="custom_fields">Campos Dinâmicos</label>
             <input type="text" name="custom_fields[0][field_name]" placeholder="Nome do Campo">
