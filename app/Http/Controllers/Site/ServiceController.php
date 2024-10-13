@@ -16,7 +16,9 @@ class ServiceController extends Controller
 
     public function create()
     {
-        return view('site.create-services');
+        $installments = range(1,12);
+        
+        return view('site.create-services', compact('installments'));
     }
     public function store(Request $request)
     {
@@ -27,6 +29,7 @@ class ServiceController extends Controller
             'image'                 => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'installment_option'    => 'nullable|array',
             'custom_fields'         => 'nullable|array',
+            'installment_options.total_installments' => 'required|integer|min:1|max:12',
         ]);
 
         $service = new Service();

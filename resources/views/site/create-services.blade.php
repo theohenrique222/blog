@@ -11,8 +11,12 @@
     <div class="w-full max-w-2xl m-auto">
         <form class="grid gap-5 p-2" action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <label for="image">Imagem do Serviço</label>
+            <input type="file" name="image" id="image">
+            
             <label for="name">Nome do Serviço</label>
             <input type="text" name="name" id="name" required>
+
 
             <label for="description">Descrição</label>
             <textarea name="description" id="description"></textarea>
@@ -20,19 +24,12 @@
             <label for="price">Preço</label>
             <input type="number" name="price" id="price" step="0.01" required>
 
-            <label for="image">Imagem do Serviço</label>
-            <input type="file" name="image" id="image">
 
             <label for="installment_options">Opções de Parcelamento</label>
-
             <select name="installment_options[total_installments]" id="total_installments">
-                <option value="1">1x</option>
-                <option value="2">2x</option>
-                <option value="3">3x</option>
-                <option value="4">4x</option>
-                <option value="5">5x</option>
-                <option value="6">6x</option>
-                <option value="12">12x</option>
+                @foreach ($installments as $installment)
+                    <option value="{{ $installment }}">{{ $installment }}x</option>
+                @endforeach
             </select>
 
             <input type="number" name="installment_options[interest_rate]" id="interest_rate"
@@ -62,16 +59,18 @@
                 const interestRate = parseFloat(interestRateInput.value);
 
                 if (!isNaN(price) && !isNaN(totalInstallments) && !isNaN(interestRate)) {
+
                     const interestMultiplier = 1 + (interestRate / 100);
                     const totalAmountWithInterest = price * interestMultiplier;
                     const installmentValue = totalAmountWithInterest / totalInstallments;
                     installmentValueInput.value = installmentValue.toFixed(2);
 
-                    for (let i = 1; i <= totalInstallments; i++) {
-                        const option = installmentSelect.options[i - 1];
-                        const totalPayment = installmentValue * i;
-                        option.text =
-                            `${i}x - R$ ${installmentValue.toFixed(2)} (Total: R$ ${totalPayment.toFixed(2)})`;
+                    for (let i = 0; i < installmentSelect.options.length; i++) {
+                        const installmentNumber = parseInt(installmentSelect.options[i].value);
+                        const installmentPrice = totalAmountWithInterest / installmentNumber;
+                        const totalPayment = installmentPrice * installmentNumber;
+                        installmentSelect.options[i].text =
+                            `${installmentNumber}x - R$ ${installmentPrice.toFixed(2)} (Total: R$ ${totalPayment.toFixed(2)})`;
                     }
                 } else {
                     installmentValueInput.value = '';
